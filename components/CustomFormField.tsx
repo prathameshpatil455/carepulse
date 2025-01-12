@@ -73,6 +73,7 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
             {...field}
             className="shad-textArea"
             disabled={props.disabled}
+            rows={4}
           />
         </FormControl>
       );
