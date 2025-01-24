@@ -21,8 +21,8 @@ const fontSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "carepulse",
-  description: "A health care management system",
+  title: "madilu",
+  description: "Dr Babre's maternity nursing home",
 };
 
 export default function RootLayout({

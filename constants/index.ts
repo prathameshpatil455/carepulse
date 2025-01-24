@@ -1,4 +1,4 @@
-export const GenderOptions = ["Male", "Female", "Other"];
+export const GenderOptions = ["Male", "Female"];
 
 export const PatientFormDefaultValues = {
   firstName: "",
@@ -76,6 +76,29 @@ export const Doctors = [
   {
     image: "/assets/images/dr-sharma.png",
     name: "Hardik Sharma",
+  },
+];
+
+export const rooms = [
+  {
+    id: 1,
+    name: "Room 1",
+  },
+  {
+    id: 2,
+    name: "Room 2",
+  },
+  {
+    id: 3,
+    name: "Room 3",
+  },
+  {
+    id: 4,
+    name: "Room 4",
+  },
+  {
+    id: 5,
+    name: "Room 5",
   },
 ];
 

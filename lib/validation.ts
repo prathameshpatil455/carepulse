@@ -9,6 +9,10 @@ export const UserFormValidation = z.object({
   phone: z
     .string()
     .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
+  aadhar_number: z.string().min(12, "Aadhar number must be 12 digits"),
+  gender: z.enum(["Male", "Female"]),
+  patientHistory: z.string().optional(),
+  room: z.string().optional(),
 });
 
 export const PatientFormValidation = z.object({
