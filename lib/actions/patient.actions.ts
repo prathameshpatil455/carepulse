@@ -129,7 +129,6 @@ export const addPatient = async (patientData) => {
           ? patientData.patientHistory
           : [patientData.patientHistory], // Ensure it's an array        room: patientData.room,
         created_at: new Date().toISOString(),
-        admitted_at: new Date().toISOString(),
       }
     );
 
@@ -154,11 +153,32 @@ export const addPatient = async (patientData) => {
 };
 
 // FETCH ALL PATIENTS
-export const getAllPatients = async () => {
+export const getAllPatients = async (searchQuery = "") => {
   try {
+    let filters: string[] | undefined = [];
+
+    if (searchQuery) {
+      filters = [
+        Query.startsWith("name", searchQuery),
+        Query.startsWith("email", searchQuery),
+        Query.startsWith("phone_no", searchQuery),
+        Query.startsWith("aadhar_card_no", searchQuery),
+      ];
+    }
+
+    // Always include sorting by "created_at"
+    filters.push(Query.orderDesc("created_at"));
+
     const patients = await databases.listDocuments(
       DATABASE_ID!,
-      PATIENT_COLLECTION_ID!
+      PATIENT_COLLECTION_ID!,
+      [
+        Query.startsWith("name", searchQuery),
+        Query.startsWith("email", searchQuery),
+        Query.startsWith("phone_no", searchQuery),
+        Query.startsWith("aadhar_card_no", searchQuery),
+        Query.orderDesc("created_at"),
+      ]
     );
 
     return parseStringify(patients.documents);
